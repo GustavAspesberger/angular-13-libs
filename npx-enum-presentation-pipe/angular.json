@@ -32,7 +32,8 @@
           "options": {
             "main": "projects/ngx-enum-presentation-pipe/src/test.ts",
             "tsConfig": "projects/ngx-enum-presentation-pipe/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-enum-presentation-pipe/karma.conf.js"
+            "karmaConfig": "projects/ngx-enum-presentation-pipe/karma.conf.js",
+            "codeCoverage": true
           }
         }
       }
