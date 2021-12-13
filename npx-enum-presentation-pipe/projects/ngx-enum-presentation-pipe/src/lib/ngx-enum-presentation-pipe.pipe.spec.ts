@@ -18,14 +18,6 @@ describe('enumPresentation', () => {
       .toEqual( output );
   }
 
-  it('Empty input, no explicit excludedWord -> empty string output', () => {
-    testNoUppercaseWord( '', '')
-  });
-
-  it('WORD input, no explicit excludedWord -> Word output', () => {
-    testNoUppercaseWord( 'WORD', 'Word')
-  });
-
   it('Empty input -> empty string output', () => {
     testNoUppercaseWord('', '');
   });
