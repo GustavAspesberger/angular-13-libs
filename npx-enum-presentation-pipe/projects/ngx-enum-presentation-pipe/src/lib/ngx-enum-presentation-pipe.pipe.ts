@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'ngxEnumPresentationPipe'
+  name: 'enumPresentation'
 })
 export class NgxEnumPresentationPipe implements PipeTransform {
 
