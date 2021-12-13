@@ -6,60 +6,56 @@ describe('enumPresentation', () => {
     expect(pipe).toBeTruthy();
   });
 
-  const testWithExcludedWord = ( input: string, excludedWordInput: string[] | undefined, output: string ) => {
+  const testUppercaseWord = ( input: string, uppercaseWord: string[], output: string ) => {
     const pipe = new NgxEnumPresentationPipe();
-    expect( pipe.transform( input, excludedWordInput ) )
+    expect( pipe.transform( input, uppercaseWord ) )
       .toEqual( output );
   }
 
-  const testWithoutExcludedWord = ( input: string, output: string ) => {
+  const testNoUppercaseWord = ( input: string, output: string ) => {
     const pipe = new NgxEnumPresentationPipe();
     expect( pipe.transform( input ) )
       .toEqual( output );
   }
 
   it('Empty input, no explicit excludedWord -> empty string output', () => {
-    testWithoutExcludedWord( '', '')
+    testNoUppercaseWord( '', '')
   });
 
   it('WORD input, no explicit excludedWord -> Word output', () => {
-    testWithoutExcludedWord( 'WORD', 'Word')
+    testNoUppercaseWord( 'WORD', 'Word')
   });
 
   it('Empty input -> empty string output', () => {
-    testWithExcludedWord('', undefined, '');
-  });
-
-  it('Empty input -> empty string output', () => {
-    testWithExcludedWord('', undefined, '');
+    testNoUppercaseWord('', '');
   });
 
   it('2 underscore input -> 2 spaces output', () => {
-    testWithExcludedWord('__', undefined, '  ');
+    testNoUppercaseWord('__', '  ');
   });
 
   it('Single Word (ALL CAPS) input -> Single word (First Letter Capitalised)', () => {
-    testWithExcludedWord('WORD', undefined, 'Word');
+    testNoUppercaseWord('WORD', 'Word');
   });
 
   it('Single Word (no caps) input -> Single word (First Letter Capitalised)', () => {
-    testWithExcludedWord('word', undefined, 'Word');
+    testNoUppercaseWord('word', 'Word');
   });
 
   it('Multiple Words (CAPS and Underscore) -> Multiple words ( _ -> space, All words first letter Capitalised )', () => {
-    testWithExcludedWord('TEST_WORD', undefined, 'Test Word');
+    testNoUppercaseWord('TEST_WORD', 'Test Word');
   });
 
   it('Multiple Words (CAPS and space) -> Multiple words ( First word First letter Capitalised )', () => {
-    testWithExcludedWord('TEST WORD', undefined, 'Test word');
+    testNoUppercaseWord('TEST WORD', 'Test word');
   });
 
   it('Special Words should be all CAPS', () => {
-    testWithExcludedWord('TEST_WORD', ['word'], 'Test WORD');
+    testUppercaseWord('TEST_WORD', ['word'], 'Test WORD');
   });
 
   it('word containing section of special word not presented in all caps', () => {
-    testWithExcludedWord('TEST_WORDS', ['word'], 'Test Words');
+    testUppercaseWord('TEST_WORDS', ['word'], 'Test Words');
   });
 
 });
