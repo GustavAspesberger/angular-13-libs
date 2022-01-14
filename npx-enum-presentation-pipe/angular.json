@@ -1,0 +1,43 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ngx-enum-presentation-pipe": {
+      "projectType": "library",
+      "root": "projects/ngx-enum-presentation-pipe",
+      "sourceRoot": "projects/ngx-enum-presentation-pipe/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-enum-presentation-pipe/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-enum-presentation-pipe/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-enum-presentation-pipe/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-enum-presentation-pipe/src/test.ts",
+            "tsConfig": "projects/ngx-enum-presentation-pipe/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-enum-presentation-pipe/karma.conf.js",
+            "codeCoverage": true
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-enum-presentation-pipe"
+}
